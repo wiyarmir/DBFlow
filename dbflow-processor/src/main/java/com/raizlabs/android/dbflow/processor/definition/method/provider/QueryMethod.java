@@ -56,7 +56,7 @@ public class QueryMethod implements MethodDefinition {
                                 .build());
                     ProviderMethodUtils.appendTableName(codeBuilder,
                         manager.getDatabaseName(contentProviderDefinition.databaseName), tableEndpointDefinition.tableName);
-                    codeBuilder.add(".where()");
+                    codeBuilder.add(".where(toConditions(selection, selectionArgs))");
                     ProviderMethodUtils.appendPathSegments(codeBuilder, manager, uriDefinition.segments,
                         contentProviderDefinition.databaseName, tableEndpointDefinition.tableName);
                     codeBuilder.add(".orderByAll(toOrderBy($L, $L))", "sortOrder", CodeBlock.builder()
